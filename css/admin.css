@@ -5,12 +5,12 @@
    ============================================================ */
 
 /* ---------- KPIs ---------- */
-.prod-stats.cols4 { grid-template-columns: repeat(2, 1fr); }
-@media (min-width: 760px) { .prod-stats.cols4 { grid-template-columns: repeat(4, 1fr); } }
+.prod-stats.cols4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 760px) { .prod-stats.cols4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 /* ---------- Grid de cartões ---------- */
 .admin-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 8px; }
-@media (min-width: 980px) { .admin-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 980px) { .admin-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .admin-card {
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 20px; min-width: 0;
@@ -71,7 +71,7 @@
 .admin-table td b { font-size: 13px; }
 .admin-table td small { color: var(--ink-3); display: block; font-size: 11.5px; }
 .admin-table .num { text-align: right; font-weight: 800; white-space: nowrap; }
-.table-scroll { overflow-x: auto; }
+.table-scroll { overflow-x: auto; width: 0; min-width: 100%; }
 
 /* ---------- Aprovações / listas de ação ---------- */
 .approve-row {

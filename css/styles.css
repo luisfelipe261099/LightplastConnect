@@ -46,6 +46,9 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+/* Trava anti-rolagem lateral: a página nunca excede a largura da tela
+   (clip não quebra position:sticky, ao contrário de hidden) */
+html, body { overflow-x: clip; max-width: 100%; }
 body {
   font-family: var(--font);
   background: var(--green-950);
@@ -60,11 +63,13 @@ a { color: inherit; text-decoration: none; }
 img, svg { display: block; }
 
 /* ============ Cascas / layout geral ============ */
-#app { display: none; min-height: 100dvh; }
+#app { display: none; min-height: 100dvh; width: 100%; }
 #app.active { display: flex; }
 
 .app-frame {
   flex: 1;
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   min-height: 100dvh;
   background: var(--paper);
@@ -237,6 +242,8 @@ img, svg { display: block; }
 .chip-row {
   display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 10px;
   scrollbar-width: none;
+  /* impede que o conteúdo rolável estique a página */
+  width: 0; min-width: 100%;
 }
 .chip-row::-webkit-scrollbar { display: none; }
 .chip {
@@ -316,7 +323,7 @@ img, svg { display: block; }
 }
 .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, 0.12); }
 
-.sso-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sso-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .btn-sso {
   display: flex; align-items: center; justify-content: center; gap: 9px;
   background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.13);
@@ -364,7 +371,7 @@ img, svg { display: block; }
 .wa-btn svg { width: 21px; height: 21px; }
 
 .stats-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;
   margin-top: -52px;
 }
 .stat-card {
@@ -380,7 +387,7 @@ img, svg { display: block; }
 .stat-card b { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; }
 .stat-card span { font-size: 11px; font-weight: 600; color: var(--ink-3); line-height: 1.25; }
 
-.shortcut-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.shortcut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .shortcut {
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius-sm);
@@ -400,6 +407,7 @@ img, svg { display: block; }
 .promo-scroll {
   display: flex; gap: 12px; overflow-x: auto; padding: 2px 2px 8px;
   scroll-snap-type: x mandatory; scrollbar-width: none;
+  width: 0; min-width: 100%;
 }
 .promo-scroll::-webkit-scrollbar { display: none; }
 .promo-card {
@@ -473,7 +481,7 @@ img, svg { display: block; }
 .search-bar svg { width: 18px; height: 18px; color: var(--ink-3); flex-shrink: 0; }
 .search-bar input { flex: 1; border: none; outline: none; background: none; font-size: 14.5px; padding: 13px 0; }
 
-.product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .product-card {
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
   overflow: hidden; display: flex; flex-direction: column;
@@ -750,7 +758,7 @@ img, svg { display: block; }
 .boleto-val small { color: var(--ink-3); font-size: 11.5px; }
 
 /* ============ Fidelidade / promoções ============ */
-.loyal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.loyal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .loyal-card {
   border-radius: var(--radius); padding: 17px;
   display: flex; flex-direction: column; gap: 4px;
@@ -860,17 +868,17 @@ img, svg { display: block; }
   .topbar .icon-btn { background: #fff; border: 1px solid var(--line); color: var(--ink-2); }
   .topbar .icon-btn .dot { border-color: #fff; }
   .main { padding-bottom: 30px; }
-  .product-grid { grid-template-columns: repeat(4, 1fr); }
+  .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .stats-grid { gap: 14px; }
-  .shortcut-grid { grid-template-columns: repeat(8, 1fr); }
+  .shortcut-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); }
   .promo-card { flex-basis: 44%; }
   .hero-strip { border-radius: 0 0 26px 26px; }
   .cart-bar { bottom: 26px; left: auto; right: 34px; min-width: 380px; }
   .toast { bottom: 40px; }
   .sheet-backdrop { align-items: center; padding: 30px; }
   .sheet { border-radius: 24px; }
-  .loyal-grid { grid-template-columns: 1fr 1fr 2fr; }
+  .loyal-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,2fr); }
 }
 @media (max-width: 400px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

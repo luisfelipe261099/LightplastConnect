@@ -37,9 +37,9 @@
 .prod-head p b { color: var(--green-700); }
 
 .prod-stats {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 16px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 16px;
 }
-@media (min-width: 760px) { .prod-stats { grid-template-columns: repeat(5, 1fr); } }
+@media (min-width: 760px) { .prod-stats { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
 .pstat {
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm);
   padding: 14px 15px; display: flex; flex-direction: column; gap: 2px;
@@ -59,9 +59,10 @@
   display: grid; grid-auto-flow: column; grid-auto-columns: 82%;
   gap: 12px; overflow-x: auto; padding: 2px 2px 14px;
   scroll-snap-type: x mandatory; scrollbar-width: thin;
+  width: 0; min-width: 100%;
 }
 @media (min-width: 1020px) {
-  .kanban { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); overflow: visible; }
+  .kanban { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); overflow: visible; }
 }
 .kb-col {
   background: #eef1ec; border-radius: var(--radius);
@@ -134,7 +135,7 @@
 
 /* ---------- Colunas inferiores ---------- */
 .prod-cols { display: grid; grid-template-columns: 1fr; gap: 10px 22px; margin-top: 10px; }
-@media (min-width: 900px) { .prod-cols { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .prod-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 .machine-row {
   display: flex; align-items: center; gap: 13px;
