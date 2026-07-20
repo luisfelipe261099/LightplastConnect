@@ -62,11 +62,11 @@ $("#clients-table").innerHTML = `
   <thead><tr><th>Cliente</th><th>Última compra</th><th>Média mensal</th><th>Status</th><th></th></tr></thead>
   <tbody>${CLIENTS.map((c) => `
     <tr>
-      <td><b>${c.name}</b><small>${c.city} · ${c.tip}</small></td>
-      <td>${c.last}</td>
-      <td class="num">${c.monthly}</td>
-      <td><span class="status-pill ${c.st}">${c.status}</span></td>
-      <td class="num">
+      <td class="td-main"><b>${c.name}</b><small>${c.city} · ${c.tip}</small></td>
+      <td data-label="Última compra">${c.last}</td>
+      <td class="num" data-label="Média mensal">${c.monthly}</td>
+      <td data-label="Status"><span class="status-pill ${c.st}">${c.status}</span></td>
+      <td class="num td-actions">
         <button class="doc-act" style="display:inline-grid;" onclick="toast('Abrindo conversa no WhatsApp com ${c.name} 💬')" title="WhatsApp">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg>
         </button>

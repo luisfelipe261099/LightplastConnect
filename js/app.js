@@ -106,8 +106,28 @@ function toast(msg) {
 }
 
 /* ---------- Login / navegação ---------- */
+let loginRole = "cliente";
+const ROLE_ROUTES = {
+  admin: "diretoria.html?role=admin",
+  producao: "producao.html",
+  comercial: "comercial.html",
+  financeiro: "financeiro.html",
+  diretoria: "diretoria.html",
+};
+
+document.addEventListener("click", (e) => {
+  const chip = e.target.closest(".role-chip");
+  if (!chip) return;
+  loginRole = chip.dataset.role;
+  $$(".role-chip").forEach((c) => c.classList.toggle("active", c === chip));
+});
+
 function doLogin(e) {
   if (e) e.preventDefault();
+  if (loginRole !== "cliente") {
+    location.href = ROLE_ROUTES[loginRole];
+    return false;
+  }
   $("#screen-login").classList.remove("active");
   $("#app").classList.add("active");
   navigate("dashboard");

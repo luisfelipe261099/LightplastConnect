@@ -133,3 +133,48 @@
 
 .kpi-icon-row { display: flex; align-items: center; justify-content: space-between; }
 .pstat .pill-note { font-size: 10.5px; font-weight: 700; border-radius: 7px; padding: 2px 8px; }
+
+/* ============================================================
+   Mobile: tabelas viram cartões empilhados, sem rolagem lateral
+   ============================================================ */
+@media (max-width: 680px) {
+  .table-scroll { overflow-x: visible; }
+  .admin-table thead { display: none; }
+  .admin-table, .admin-table tbody { display: block; width: 100%; }
+  .admin-table tr {
+    display: grid; grid-template-columns: 1fr auto; gap: 2px 12px;
+    border: 1px solid var(--line); border-radius: var(--radius-sm);
+    background: #fff; padding: 13px 14px; margin-bottom: 9px;
+  }
+  .admin-table td { display: block; border: none; padding: 0; }
+  .admin-table td.td-main { grid-column: 1; }
+  .admin-table td.td-main b { font-size: 14px; }
+  .admin-table td.td-actions {
+    grid-column: 2; grid-row: 1 / span 4; align-self: center; text-align: right;
+  }
+  .admin-table td[data-label] {
+    grid-column: 1;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    margin-top: 7px; font-weight: 700;
+  }
+  .admin-table td[data-label]::before {
+    content: attr(data-label);
+    font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--ink-3); font-weight: 800;
+  }
+  .admin-table td.num { text-align: right; }
+}
+
+/* Ajustes finos de espaçamento em telas pequenas */
+@media (max-width: 520px) {
+  .admin-card { padding: 16px; border-radius: 16px; }
+  .goal-big { font-size: 26px; }
+  .hbar-row { grid-template-columns: 96px 1fr 52px; gap: 8px; }
+  .hbar-row .hb-label { font-size: 11.5px; }
+  .hbar-row .hb-val { font-size: 11.5px; }
+  .approve-row { padding: 13px 14px; }
+  .approve-actions { width: 100%; }
+  .approve-actions .btn-approve, .approve-actions .btn-reject { flex: 1; justify-content: center; }
+  .stack-legend { flex-direction: column; gap: 7px; }
+  .chart-tip { display: none; }
+}

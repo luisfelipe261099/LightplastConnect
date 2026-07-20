@@ -313,6 +313,25 @@ img, svg { display: block; }
 }
 .field input::placeholder { color: rgba(233, 242, 234, 0.35); }
 
+/* Seletor de perfil de acesso */
+.role-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.role-chip {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 13px; padding: 11px 4px 10px;
+  color: rgba(233, 242, 234, 0.8); font-size: 11px; font-weight: 700;
+  transition: all 0.15s; line-height: 1.15; text-align: center;
+}
+.role-chip svg { width: 17px; height: 17px; opacity: 0.8; }
+.role-chip:hover { background: rgba(255, 255, 255, 0.12); }
+.role-chip.active {
+  background: var(--lime); border-color: var(--lime);
+  color: var(--green-950); font-weight: 800;
+}
+.role-chip.active svg { opacity: 1; }
+@media (max-width: 340px) { .role-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 .login-aux { display: flex; justify-content: flex-end; margin-top: -2px; }
 .login-aux a { font-size: 13px; color: rgba(233, 242, 234, 0.65); font-weight: 600; }
 .login-aux a:hover { color: var(--lime); }

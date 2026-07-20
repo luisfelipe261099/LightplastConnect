@@ -1,5 +1,16 @@
 /* LightPlast Connect — Dashboard Executivo (dados fictícios de demonstração) */
 
+/* Modo Administrador: mesmo dashboard, identidade de acesso total */
+if (new URLSearchParams(location.search).get("role") === "admin") {
+  document.title = "Painel Administrativo — LightPlast Connect";
+  document.querySelector(".prod-tagline").textContent = "Painel Administrativo";
+  const pill = document.querySelector(".shift-pill");
+  pill.innerHTML = '<span class="pulse-dot"></span> Acesso total ao sistema';
+  const av = document.querySelector(".topbar .avatar");
+  av.textContent = "AD";
+  av.title = "Administrador do sistema";
+}
+
 /* ---------- Faturamento mensal (colunas, série única) ---------- */
 const REVENUE = [
   { m: "Fev", v: 402 }, { m: "Mar", v: 418 }, { m: "Abr", v: 395 },

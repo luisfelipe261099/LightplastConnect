@@ -9,15 +9,14 @@ const TITLES = [
 ];
 
 $("#titles-table").innerHTML = `
-  <thead><tr><th>Cliente</th><th>Título</th><th>Vencimento</th><th>Valor</th><th>Status</th><th></th></tr></thead>
+  <thead><tr><th>Cliente / Título</th><th>Vencimento</th><th>Valor</th><th>Status</th><th></th></tr></thead>
   <tbody>${TITLES.map((t, i) => `
     <tr>
-      <td><b>${t.client}</b></td>
-      <td><small style="display:inline;">${t.nf}</small></td>
-      <td>${t.venc}</td>
-      <td class="num">${fmtBRL(t.valor)}</td>
-      <td><span class="status-pill ${t.st}">${t.status}</span></td>
-      <td class="num" style="white-space:nowrap;">
+      <td class="td-main"><b>${t.client}</b><small>${t.nf}</small></td>
+      <td data-label="Vencimento">${t.venc}</td>
+      <td class="num" data-label="Valor">${fmtBRL(t.valor)}</td>
+      <td data-label="Status"><span class="status-pill ${t.st}">${t.status}</span></td>
+      <td class="num td-actions" style="white-space:nowrap;">
         <button class="doc-act" style="display:inline-grid;" onclick="toast('2ª via do boleto reenviada para ${t.client} 📄')" title="Reenviar 2ª via">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
         </button>
