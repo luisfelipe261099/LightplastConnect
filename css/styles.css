@@ -46,9 +46,10 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-/* Trava anti-rolagem lateral: a página nunca excede a largura da tela
-   (clip não quebra position:sticky, ao contrário de hidden) */
-html, body { overflow-x: clip; max-width: 100%; }
+/* Trava anti-rolagem lateral: a página nunca excede a largura da tela.
+   hidden = fallback p/ navegadores antigos; clip (não quebra sticky) vence
+   onde houver suporte */
+html, body { overflow-x: hidden; overflow-x: clip; max-width: 100%; }
 body {
   font-family: var(--font);
   background: var(--green-950);
@@ -877,6 +878,22 @@ img, svg { display: block; }
 .install-hint .btn { width: auto; margin-left: auto; flex-shrink: 0; }
 
 .screen-pad { padding-bottom: 30px; }
+
+/* ============ Celular: nada de rolagem lateral ============
+   Filtros quebram linha e promoções empilham na vertical —
+   todo o conteúdo visível sem arrastar a tela para o lado. */
+@media (max-width: 700px) {
+  .chip-row {
+    flex-wrap: wrap; overflow-x: visible;
+    width: auto; min-width: 0;
+  }
+  .promo-scroll {
+    flex-direction: column; overflow-x: visible;
+    width: auto; min-width: 0;
+    scroll-snap-type: none;
+  }
+  .promo-card { flex: none; width: 100%; max-width: none; }
+}
 
 /* ============ Desktop ============ */
 @media (min-width: 900px) {

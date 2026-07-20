@@ -185,6 +185,15 @@
   .topbar .icon-btn { background: rgba(255, 255, 255, 0.08); border: none; color: #fff; }
 }
 
+/* Celular: kanban empilha as etapas na vertical — sem arrastar de lado */
+@media (max-width: 1019px) {
+  .kanban {
+    grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: 100%;
+    overflow-x: visible; width: auto; min-width: 0;
+    scroll-snap-type: none;
+  }
+}
+
 /* Ajustes de espaçamento e tipografia para telas pequenas */
 @media (max-width: 520px) {
   .prod-container { padding: 0 14px; }
@@ -195,7 +204,6 @@
   .prod-stats { gap: 8px; }
   .pstat { padding: 12px 13px; }
   .pstat b { font-size: 19px; }
-  .kanban { grid-auto-columns: 88%; }
   .machine-row, .done-row { padding: 12px 13px; }
   .done-row { flex-wrap: wrap; }
   .done-row .btn { margin-left: 47px; }

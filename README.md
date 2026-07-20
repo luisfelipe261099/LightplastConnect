@@ -7,6 +7,20 @@ front-end, com dados fictícios ("chumbados"), sem back-end.
 > Objetivo: demonstrar a experiência completa da plataforma para o cliente
 > (LightPlast) antes do desenvolvimento do produto final.
 
+## Publicar em produção (GitHub Pages)
+
+O deploy é automático a cada push (workflow `Publicar no GitHub Pages`).
+Só é preciso **ativar o Pages uma única vez**, manualmente:
+
+1. Acesse **Settings → Pages** do repositório
+   (`github.com/luisfelipe261099/LightplastConnect/settings/pages`)
+2. Em **Build and deployment → Source**, selecione **GitHub Actions**
+3. Vá na aba **Actions**, abra o workflow **"Publicar no GitHub Pages"**
+   e clique em **Run workflow** (ou faça qualquer push)
+
+O site ficará no ar em:
+**https://luisfelipe261099.github.io/LightplastConnect/**
+
 ## Como abrir
 
 **Opção 1 — direto no navegador:** dê dois cliques em `index.html`.
