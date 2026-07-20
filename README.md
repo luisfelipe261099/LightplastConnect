@@ -45,6 +45,15 @@ Tudo responsivo: **mobile-first** (navegação inferior + FAB de pedido rápido)
 **desktop** (barra lateral), seguindo a identidade visual LightPlast
 (verde-floresta + verde-lima + logotipo serifado "lp").
 
+## Painéis internos (acesso pela tela de login)
+
+| Painel | Arquivo | Destaques |
+| --- | --- | --- |
+| Produção | `producao.html` | Esteira kanban de fabricação, avanço de etapa em 1 clique, previsão de entrega, máquinas |
+| Comercial | `comercial.html` | Meta do mês, aprovações de pedido, orçamentos, agenda de visitas, carteira de clientes |
+| Financeiro | `financeiro.html` | Títulos em aberto com cobrança em 1 clique, recebimentos por forma, limites de crédito |
+| Diretoria | `diretoria.html` | Faturamento mensal, vendas por representante, produtos top, origem dos pedidos, adoção do app |
+
 ## Estrutura
 
 ```

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Painel Comercial — LightPlast Connect</title>
+  <meta name="theme-color" content="#0c1d10" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,wght@1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/producao.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="prod-body">
+
+  <header class="topbar">
+    <div class="topbar-inner prod-topbar">
+      <a class="brand" href="index.html" title="Voltar ao portal">
+        <div class="logo-mark" style="width:36px;height:36px;font-size:17px;">lp</div>
+        <div>
+          <div class="brand-name">LIGHT<span>PLAST</span></div>
+          <div class="prod-tagline">Painel Comercial</div>
+        </div>
+      </a>
+      <span class="shift-pill">
+        <span class="pulse-dot"></span>
+        Representante · Região Sul
+      </span>
+      <div class="topbar-actions">
+        <a class="icon-btn" href="index.html" title="Sair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></a>
+        <div class="avatar" title="Carlos Mendes — Representante">CM</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="prod-main">
+    <div class="prod-container">
+
+      <div class="prod-head">
+        <div>
+          <h1>Boa tarde, Carlos! 🤝</h1>
+          <p>Sua carteira em julho · <b>28 clientes ativos</b></p>
+        </div>
+        <div class="prod-head-actions">
+          <button class="btn btn-ghost btn-sm" onclick="toast('Catálogo com tabela da sua região pronto para compartilhar 📤')">Compartilhar catálogo</button>
+        </div>
+      </div>
+
+      <div class="prod-stats cols4">
+        <div class="pstat hl"><b>R$ 142 mil</b><span>Vendas no mês</span><span class="delta up">▲ 1º do ranking</span></div>
+        <div class="pstat"><b>46</b><span>Pedidos na carteira</span><span class="delta up">▲ 12 pelo portal</span></div>
+        <div class="pstat"><b>R$ 4.320</b><span>Comissões previstas</span><span class="delta up">Fech. dia 05/08</span></div>
+        <div class="pstat"><b>3</b><span>Aguardando sua ação</span><span class="delta warn">2 aprovações · 1 orçamento</span></div>
+      </div>
+
+      <div class="admin-grid">
+
+        <div class="admin-card goal-card">
+          <h3>Meta de julho</h3>
+          <div class="sub">Faturamento da carteira</div>
+          <div class="goal-big">78% <small>da meta atingida</small></div>
+          <div class="goal-bar"><i style="width:78%;"></i></div>
+          <div class="goal-foot"><span>R$ 142 mil</span><span>Meta: R$ 182 mil</span></div>
+          <p style="font-size:12.5px;color:rgba(233,242,234,.65);margin-top:14px;">
+            Faltam <b style="color:var(--lime);">R$ 40 mil</b> · 8 dias úteis. Ritmo atual projeta <b style="color:var(--lime);">R$ 189 mil</b> ✨
+          </p>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h3>Agenda de visitas</h3>
+              <div class="sub">Próximos compromissos</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="toast('Nova visita agendada e sincronizada com sua agenda 🗓️')">+ Agendar</button>
+          </div>
+          <div class="agenda-row today">
+            <span class="agenda-date"><b>20</b><small>Hoje</small></span>
+            <span class="agenda-mid"><b>Supermercados Boa Vista</b><small>15h30 · Aprovação da arte do saco personalizado</small></span>
+          </div>
+          <div class="agenda-row">
+            <span class="agenda-date"><b>22</b><small>Qua</small></span>
+            <span class="agenda-mid"><b>Hospital Santa Clara</b><small>10h00 · Renovação de contrato anual</small></span>
+          </div>
+          <div class="agenda-row">
+            <span class="agenda-date"><b>24</b><small>Sex</small></span>
+            <span class="agenda-mid"><b>Condomínio Parque Verde</b><small>14h00 · Apresentar linha compostável</small></span>
+          </div>
+        </div>
+
+        <div class="admin-card span2">
+          <div class="admin-card-head">
+            <div>
+              <h3>Aguardando sua ação</h3>
+              <div class="sub">Pedidos para aprovar e orçamentos para responder</div>
+            </div>
+          </div>
+          <div id="approvals"></div>
+        </div>
+
+        <div class="admin-card span2">
+          <div class="admin-card-head">
+            <div>
+              <h3>Carteira de clientes</h3>
+              <div class="sub">Ordenada por potencial de recompra</div>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="admin-table" id="clients-table"></table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/admin-shared.js"></script>
+  <script src="js/comercial.js"></script>
+</body>
+</html>

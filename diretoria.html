@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Dashboard Executivo — LightPlast Connect</title>
+  <meta name="theme-color" content="#0c1d10" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,wght@1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/producao.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="prod-body">
+
+  <header class="topbar">
+    <div class="topbar-inner prod-topbar">
+      <a class="brand" href="index.html" title="Voltar ao portal">
+        <div class="logo-mark" style="width:36px;height:36px;font-size:17px;">lp</div>
+        <div>
+          <div class="brand-name">LIGHT<span>PLAST</span></div>
+          <div class="prod-tagline">Dashboard Executivo</div>
+        </div>
+      </a>
+      <span class="shift-pill">
+        <span class="pulse-dot"></span>
+        Dados em tempo real
+      </span>
+      <div class="topbar-actions">
+        <a class="icon-btn" href="index.html" title="Sair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></a>
+        <div class="avatar" title="Ricardo Portela — Diretor">RP</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="prod-main">
+    <div class="prod-container">
+
+      <div class="prod-head">
+        <div>
+          <h1>Visão geral do negócio 📊</h1>
+          <p>Julho de 2026 · comparativos contra junho</p>
+        </div>
+        <div class="prod-head-actions">
+          <button class="btn btn-ghost btn-sm" onclick="toast('Relatório executivo exportado em PDF 📄')">Exportar relatório</button>
+        </div>
+      </div>
+
+      <div class="prod-stats">
+        <div class="pstat hl"><b>R$ 486,2 mil</b><span>Faturamento no mês</span><span class="delta up">▲ 12,4% vs junho</span></div>
+        <div class="pstat"><b>342</b><span>Pedidos no mês</span><span class="delta up">▲ 9,2%</span></div>
+        <div class="pstat"><b>R$ 1.421</b><span>Ticket médio</span><span class="delta up">▲ 2,9%</span></div>
+        <div class="pstat"><b>187</b><span>Clientes ativos</span><span class="delta up">▲ 11 novos</span></div>
+        <div class="pstat"><b>2,1%</b><span>Inadimplência</span><span class="delta up">▼ 0,4 p.p.</span></div>
+      </div>
+
+      <div class="admin-grid">
+
+        <div class="admin-card span2">
+          <div class="admin-card-head">
+            <div>
+              <h3>Faturamento mensal</h3>
+              <div class="sub">Últimos 6 meses · R$ mil</div>
+            </div>
+            <span class="status-pill st-entregue">Melhor mês do ano</span>
+          </div>
+          <div class="colchart" id="revenue-chart"></div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h3>Vendas por representante</h3>
+              <div class="sub">Julho · R$ mil faturados</div>
+            </div>
+          </div>
+          <div id="reps-chart"></div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h3>Produtos mais vendidos</h3>
+              <div class="sub">Participação no faturamento de julho</div>
+            </div>
+          </div>
+          <div id="products-chart"></div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h3>Origem dos pedidos</h3>
+              <div class="sub">O portal já é o principal canal de vendas</div>
+            </div>
+            <span class="status-pill st-entregue">▲ 62% digital</span>
+          </div>
+          <div class="stackbar" id="channels-bar"></div>
+          <div class="stack-legend" id="channels-legend"></div>
+          <p style="font-size:12.5px;color:var(--ink-2);margin-top:14px;line-height:1.5;">
+            Pedidos pelo portal crescem <b>8 p.p. ao mês</b> desde o lançamento,
+            reduzindo o atendimento manual por WhatsApp e telefone.
+          </p>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h3>Adoção da plataforma</h3>
+              <div class="sub">Clientes usando o LightPlast Connect</div>
+            </div>
+          </div>
+          <div class="prod-stats" style="grid-template-columns:1fr 1fr;margin-top:2px;">
+            <div class="pstat"><b>141</b><span>Apps instalados (PWA)</span><span class="delta up">▲ 18 na semana</span></div>
+            <div class="pstat"><b>93%</b><span>Push abertos em 24h</span><span class="delta up">Engajamento alto</span></div>
+            <div class="pstat"><b>4,8 ★</b><span>Satisfação no app</span><span class="delta up">217 avaliações</span></div>
+            <div class="pstat"><b>−41%</b><span>Chamados repetitivos</span><span class="delta up">2ª via, status, NF-e</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/admin-shared.js"></script>
+  <script src="js/diretoria.js"></script>
+</body>
+</html>

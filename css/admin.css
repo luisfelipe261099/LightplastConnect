@@ -1,0 +1,135 @@
+/* ============================================================
+   LightPlast Connect — Painéis administrativos
+   (Diretoria, Comercial, Financeiro)
+   Estende styles.css + producao.css
+   ============================================================ */
+
+/* ---------- KPIs ---------- */
+.prod-stats.cols4 { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 760px) { .prod-stats.cols4 { grid-template-columns: repeat(4, 1fr); } }
+
+/* ---------- Grid de cartões ---------- */
+.admin-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 8px; }
+@media (min-width: 980px) { .admin-grid { grid-template-columns: 1fr 1fr; } }
+.admin-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px; min-width: 0;
+}
+.admin-card.span2 { grid-column: 1 / -1; }
+.admin-card h3 { font-size: 15px; font-weight: 800; letter-spacing: -0.01em; }
+.admin-card .sub { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
+.admin-card-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+  margin-bottom: 16px;
+}
+
+/* ---------- Gráfico de colunas ---------- */
+.colchart { position: relative; }
+.colchart svg { width: 100%; height: auto; display: block; }
+.colchart .grid-line { stroke: var(--line); stroke-width: 1; }
+.colchart .grid-label { font-size: 10px; fill: var(--ink-3); font-weight: 600; }
+.colchart .bar { fill: var(--green-600); transition: fill 0.15s; cursor: pointer; }
+.colchart .bar:hover { fill: var(--green-800); }
+.colchart .bar.hl { fill: var(--lime-dark); }
+.colchart .x-label { font-size: 11px; fill: var(--ink-3); font-weight: 700; text-anchor: middle; }
+.colchart .bar-value { font-size: 11px; font-weight: 800; fill: var(--ink); text-anchor: middle; }
+.chart-tip {
+  position: absolute; pointer-events: none; opacity: 0; transition: opacity 0.12s;
+  background: var(--green-950); color: #fff; font-size: 12px; font-weight: 700;
+  border-radius: 9px; padding: 7px 11px; white-space: nowrap; z-index: 5;
+  transform: translate(-50%, -110%);
+}
+.chart-tip small { display: block; font-weight: 600; color: rgba(233, 242, 234, 0.6); font-size: 10.5px; }
+.chart-tip.show { opacity: 1; }
+
+/* ---------- Barras horizontais ---------- */
+.hbar-row { display: grid; grid-template-columns: 128px 1fr 64px; align-items: center; gap: 10px; }
+.hbar-row + .hbar-row { margin-top: 12px; }
+.hbar-row .hb-label { font-size: 12.5px; font-weight: 700; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hbar-track { height: 14px; background: #eef1ec; border-radius: 5px; overflow: hidden; }
+.hbar-track i {
+  display: block; height: 100%; background: var(--green-600);
+  border-radius: 0 4px 4px 0; transition: width 0.5s ease;
+}
+.hbar-row .hb-val { font-size: 12px; font-weight: 800; text-align: right; }
+.hbar-row.hl .hbar-track i { background: var(--lime-dark); }
+
+/* ---------- Barra de composição (canais) ---------- */
+.stackbar { display: flex; height: 22px; border-radius: 8px; overflow: hidden; gap: 2px; margin-top: 14px; }
+.stackbar i { display: block; height: 100%; }
+.stack-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; }
+.stack-legend span { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: var(--ink-2); }
+.stack-legend .sw { width: 10px; height: 10px; border-radius: 3px; }
+
+/* ---------- Tabela ---------- */
+.admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.admin-table th {
+  text-align: left; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-3); font-weight: 800; padding: 0 10px 10px 0; white-space: nowrap;
+}
+.admin-table td { padding: 11px 10px 11px 0; border-top: 1px solid var(--line); vertical-align: middle; }
+.admin-table td b { font-size: 13px; }
+.admin-table td small { color: var(--ink-3); display: block; font-size: 11.5px; }
+.admin-table .num { text-align: right; font-weight: 800; white-space: nowrap; }
+.table-scroll { overflow-x: auto; }
+
+/* ---------- Aprovações / listas de ação ---------- */
+.approve-row {
+  display: flex; align-items: center; gap: 13px; flex-wrap: wrap;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 14px 15px;
+}
+.approve-row + .approve-row { margin-top: 9px; }
+.approve-row.leaving { opacity: 0; transform: translateX(14px); transition: all 0.3s ease; }
+.approve-mid { flex: 1; min-width: 180px; }
+.approve-mid b { font-size: 13.5px; display: block; }
+.approve-mid small { color: var(--ink-3); font-size: 12px; }
+.approve-actions { display: flex; gap: 7px; }
+.btn-approve {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--green-900); color: var(--lime); font-size: 12.5px; font-weight: 700;
+  border-radius: 10px; padding: 9px 14px; transition: background 0.15s;
+}
+.btn-approve:hover { background: var(--green-700); }
+.btn-reject {
+  background: #eef1ec; color: var(--red); font-size: 12.5px; font-weight: 700;
+  border-radius: 10px; padding: 9px 14px; transition: background 0.15s;
+}
+.btn-reject:hover { background: var(--red-bg); }
+
+/* ---------- Meta / progresso ---------- */
+.goal-card { background: linear-gradient(150deg, var(--green-900), var(--green-850)); color: #fff; border: none; }
+.goal-card h3 { color: #fff; }
+.goal-card .sub { color: rgba(233, 242, 234, 0.55); }
+.goal-big { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; margin-top: 10px; }
+.goal-big small { font-size: 13px; color: rgba(233, 242, 234, 0.6); font-weight: 600; }
+.goal-bar { height: 10px; background: rgba(255, 255, 255, 0.13); border-radius: 99px; margin-top: 14px; overflow: hidden; }
+.goal-bar i { display: block; height: 100%; background: var(--lime); border-radius: 99px; }
+.goal-foot { display: flex; justify-content: space-between; font-size: 12px; color: rgba(233, 242, 234, 0.65); margin-top: 8px; font-weight: 600; }
+
+/* ---------- Agenda ---------- */
+.agenda-row { display: flex; gap: 13px; align-items: center; }
+.agenda-row + .agenda-row { margin-top: 12px; }
+.agenda-date {
+  width: 48px; height: 52px; border-radius: 12px; flex-shrink: 0;
+  background: #eef3ea; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.agenda-date b { font-size: 17px; color: var(--green-800); line-height: 1; }
+.agenda-date small { font-size: 9.5px; font-weight: 800; text-transform: uppercase; color: var(--ink-3); letter-spacing: 0.06em; }
+.agenda-row.today .agenda-date { background: var(--green-900); }
+.agenda-row.today .agenda-date b { color: var(--lime); }
+.agenda-row.today .agenda-date small { color: rgba(233, 242, 234, 0.6); }
+.agenda-mid { flex: 1; min-width: 0; }
+.agenda-mid b { font-size: 13.5px; display: block; }
+.agenda-mid small { color: var(--ink-3); font-size: 12px; }
+
+/* ---------- Rank de clientes / crédito ---------- */
+.credit-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; }
+.credit-row + .credit-row { margin-top: 14px; }
+.credit-row .cr-name { grid-column: 1; grid-row: 1; font-size: 13px; font-weight: 700; }
+.credit-row .cr-name small { color: var(--ink-3); font-weight: 600; margin-left: 6px; }
+.credit-row .hbar-track { grid-column: 1; grid-row: 2; height: 10px; }
+.credit-row .cr-action { grid-column: 2; grid-row: 1 / span 2; }
+
+.kpi-icon-row { display: flex; align-items: center; justify-content: space-between; }
+.pstat .pill-note { font-size: 10.5px; font-weight: 700; border-radius: 7px; padding: 2px 8px; }

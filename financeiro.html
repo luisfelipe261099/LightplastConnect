@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Painel Financeiro — LightPlast Connect</title>
+  <meta name="theme-color" content="#0c1d10" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,wght@1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/producao.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="prod-body">
+
+  <header class="topbar">
+    <div class="topbar-inner prod-topbar">
+      <a class="brand" href="index.html" title="Voltar ao portal">
+        <div class="logo-mark" style="width:36px;height:36px;font-size:17px;">lp</div>
+        <div>
+          <div class="brand-name">LIGHT<span>PLAST</span></div>
+          <div class="prod-tagline">Painel Financeiro</div>
+        </div>
+      </a>
+      <span class="shift-pill">
+        <span class="pulse-dot"></span>
+        Conciliação em dia
+      </span>
+      <div class="topbar-actions">
+        <a class="icon-btn" href="index.html" title="Sair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></a>
+        <div class="avatar" title="Marina Duarte — Financeiro">MD</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="prod-main">
+    <div class="prod-container">
+
+      <div class="prod-head">
+        <div>
+          <h1>Contas a receber 💚</h1>
+          <p>Julho de 2026 · boletos, PIX e notas fiscais emitidos pelo portal</p>
+        </div>
+        <div class="prod-head-actions">
+          <button class="btn btn-ghost btn-sm" onclick="toast('Relatório financeiro exportado em Excel 📊')">Exportar relatório</button>
+        </div>
+      </div>
+
+      <div class="prod-stats cols4">
+        <div class="pstat hl"><b>R$ 214,6 mil</b><span>A receber (total)</span><span class="delta up">97,9% em dia</span></div>
+        <div class="pstat"><b>R$ 168,4 mil</b><span>Recebido no mês</span><span class="delta up">▲ 14% vs junho</span></div>
+        <div class="pstat"><b>R$ 4,5 mil</b><span>Vencidos</span><span class="delta warn">3 títulos · 2 clientes</span></div>
+        <div class="pstat"><b>96</b><span>NF-e emitidas no mês</span><span class="delta up">100% pelo portal</span></div>
+      </div>
+
+      <div class="admin-grid">
+
+        <div class="admin-card span2">
+          <div class="admin-card-head">
+            <div>
+              <h3>Títulos em aberto</h3>
+              <div class="sub">Cobrança automática: lembrete por push e WhatsApp 3 dias antes do vencimento</div>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="admin-table" id="titles-table"></table>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h3>Recebimentos por forma</h3>
+              <div class="sub">Julho · participação no total recebido</div>
+            </div>
+          </div>
+          <div id="payment-chart"></div>
+          <p style="font-size:12.5px;color:var(--ink-2);margin-top:16px;line-height:1.5;">
+            O PIX no portal caiu de <b>3 dias para 12 segundos</b> o tempo médio de
+            confirmação de pagamento.
+          </p>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h3>Limites de crédito</h3>
+              <div class="sub">Clientes com maior utilização</div>
+            </div>
+          </div>
+          <div id="credit-list"></div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/admin-shared.js"></script>
+  <script src="js/financeiro.js"></script>
+</body>
+</html>
